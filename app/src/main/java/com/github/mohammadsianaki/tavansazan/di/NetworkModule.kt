@@ -3,6 +3,7 @@ package com.github.mohammadsianaki.tavansazan.di
 import android.content.Context
 import android.util.Log
 import com.github.mohammadsianaki.core.network.adapter.NetworkResponseAdapterFactory
+import com.github.mohammadsianaki.tavansazan.data.api.TokenInterceptor
 import com.google.gson.Gson
 import com.readystatesoftware.chuck.ChuckInterceptor
 import dagger.Module
@@ -39,13 +40,12 @@ object NetworkModule {
     @Singleton
     fun providesOkHttpClient(
         @ApplicationContext context: Context,
-//        tokenInterceptor: TokenInterceptor,
+        tokenInterceptor: TokenInterceptor,
     ): OkHttpClient = OkHttpClient.Builder().apply {
         connectTimeout(5, TimeUnit.SECONDS)
         writeTimeout(5, TimeUnit.SECONDS)
         readTimeout(5, TimeUnit.SECONDS)
-//        addInterceptor(tokenInterceptor)
-//        addNetworkInterceptor(connectivityInterceptor)
+        addInterceptor(tokenInterceptor)
         addInterceptor(HttpLoggingInterceptor(object : HttpLoggingInterceptor.Logger {
             override fun log(message: String) {
                 Log.d("<<<network>>>", message)

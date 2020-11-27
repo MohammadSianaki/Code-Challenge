@@ -1,4 +1,4 @@
-package com.github.mohammadsianaki.tavansazan.presentation.home
+package com.github.mohammadsianaki.tavansazan.presentation.home.promo
 
 import com.github.mohammadsianaki.core.ui.adapter.RecyclerData
 import  com.github.mohammadsianaki.tavansazan.presentation.ViewTypes

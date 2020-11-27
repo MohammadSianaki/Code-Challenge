@@ -7,7 +7,7 @@ import com.github.mohammadsianaki.core.databinding.ItemSectionBinding
 
 abstract class SectionViewHolder<Section, SectionItem>(
     private val binding: ItemSectionBinding,
-    private val eventHandler:SectionViewHolderEventHandler
+    private val eventHandler:SectionViewHolderEventHandler?=null
 ) : BaseViewHolder<Section>(binding.root)
         where  Section : SectionRecyclerData<SectionItem>, SectionItem : RecyclerData {
 
@@ -20,7 +20,7 @@ abstract class SectionViewHolder<Section, SectionItem>(
 
     override fun bindData(section: Section) {
         binding.sectionLabel.text = section.sectionTitle
-        adapter.onItemClickListener = eventHandler::onItemClicked
+//        adapter.onItemClickListener = eventHandler::onItemClicked
         binding.sectionRecyclerView.apply {
             adapter = this@SectionViewHolder.adapter.apply {
                 items = section.items.toMutableList()

@@ -44,6 +44,7 @@ abstract class RecyclerFragment<VB : ViewBinding , Data : RecyclerData, VM : Rec
 
     override fun initUI(rootView: View) {
         _emptyView = viewBinding.root.findViewById(R.id.emptyView)
+        _errorView = viewBinding.root.findViewById(R.id.errorView)
         _progressBar = viewBinding.root.findViewById(R.id.loadingView)
         _recyclerView = viewBinding.root.findViewById<RecyclerView>(R.id.recyclerView).apply {
             adapter = recyclerAdapter

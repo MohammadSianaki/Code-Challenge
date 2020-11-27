@@ -2,6 +2,5 @@
 <font-family xmlns:app="http://schemas.android.com/apk/res-auto">
     <font
         app:font="@font/_poppins_medium"
-        app:fontStyle="normal"
-        app:fontWeight="500" />
+        app:fontStyle="normal" />
 </font-family>

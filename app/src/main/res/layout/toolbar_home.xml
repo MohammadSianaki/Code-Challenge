@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/toolbar_home_background"
+    android:elevation="3dp">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/greeting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/default_margin"
+        android:layout_marginTop="48dp"
+        android:fontFamily="@font/regular"
+        android:text="Hello,"
+        android:textColor="@color/color_text_primary"
+        android:textFontWeight="300"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@id/greetingImage"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/userName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/default_margin"
+        android:fontFamily="@font/medium"
+        android:text="Mitchell Cooper"
+        android:textColor="@color/color_text_primary"
+        android:textFontWeight="600"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/greetingImage"
+        app:layout_constraintStart_toEndOf="@id/greetingImage"
+        app:layout_constraintTop_toBottomOf="@id/greeting" />
+
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/greetingImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/double_margin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/greeting"
+        app:srcCompat="@drawable/ic_hello_hand" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/avatarImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/double_margin"
+        app:layout_constraintBottom_toBottomOf="@+id/greetingImage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/greetingImage"
+        app:srcCompat="@drawable/ic_avatar" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/double_margin"
+        android:background="@color/light_gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/avatarImage" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/pinImage"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="@dimen/double_margin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="@dimen/double_margin"
+        app:layout_constraintStart_toStartOf="@id/greetingImage"
+        app:layout_constraintTop_toBottomOf="@id/divider"
+        app:srcCompat="@drawable/ic_map_pin" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/selectAddress"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/default_margin"
+        android:layout_marginEnd="@dimen/double_margin"
+        android:fontFamily="@font/regular"
+        android:text="Set Your Address"
+        android:textColor="@color/color_text_secondary"
+        android:textFontWeight="300"
+        android:textSize="14sp"
+        app:drawableEndCompat="@drawable/ic_arrow_down"
+        app:layout_constraintBottom_toBottomOf="@+id/pinImage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/pinImage"
+        app:layout_constraintTop_toTopOf="@id/pinImage" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -26,7 +26,7 @@ inline fun <T> Result<T>.fold(
 }
 
 @OptIn(ExperimentalContracts::class)
-inline fun <V, U> Result<V>.map(transform: (V) -> U): Result<U>? {
+inline fun <V, U> Result<V>.map(transform: (V) -> U): Result<U> {
     contract {
         callsInPlace(transform, InvocationKind.AT_MOST_ONCE)
     }

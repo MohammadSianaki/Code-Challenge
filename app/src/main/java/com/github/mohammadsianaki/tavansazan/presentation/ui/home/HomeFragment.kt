@@ -1,4 +1,4 @@
-package com.github.mohammadsianaki.tavansazan.presentation.home
+package com.github.mohammadsianaki.tavansazan.presentation.ui.home
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -9,7 +9,7 @@ import com.github.mohammadsianaki.tavansazan.databinding.FragmentHomeBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class HomeFragment : RecyclerFragment<FragmentHomeBinding, TestData, HomeViewModel>() {
+class HomeFragment : RecyclerFragment<FragmentHomeBinding, HomePageItemModel, HomeViewModel>() {
     override val recyclerAdapter: HomeAdapter by lazy(LazyThreadSafetyMode.NONE) { HomeAdapter() }
     override val viewModel: HomeViewModel by viewModels()
 

@@ -1,11 +1,10 @@
-package com.github.mohammadsianaki.tavansazan.presentation.home.promo
+package com.github.mohammadsianaki.tavansazan.presentation.ui.home.promo
 
 import com.github.mohammadsianaki.core.databinding.ItemSectionBinding
 import com.github.mohammadsianaki.core.ui.adapter.BaseRecyclerAdapter
 import com.github.mohammadsianaki.core.ui.adapter.SectionOrientation
 import com.github.mohammadsianaki.core.ui.adapter.SectionRecyclerData
 import com.github.mohammadsianaki.core.ui.adapter.SectionViewHolder
-import com.github.mohammadsianaki.tavansazan.presentation.ViewTypes
 
 class PromoSectionViewHolder(
     binding: ItemSectionBinding

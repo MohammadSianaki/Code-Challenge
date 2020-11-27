@@ -1,4 +1,4 @@
-package com.github.mohammadsianaki.tavansazan.presentation.home.promo
+package com.github.mohammadsianaki.tavansazan.presentation.ui.home.promo
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

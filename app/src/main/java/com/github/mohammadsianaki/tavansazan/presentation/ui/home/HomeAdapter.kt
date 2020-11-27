@@ -1,4 +1,4 @@
-package com.github.mohammadsianaki.tavansazan.presentation.home
+package com.github.mohammadsianaki.tavansazan.presentation.ui.home
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,11 +6,11 @@ import com.github.mohammadsianaki.core.databinding.ItemSectionBinding
 import com.github.mohammadsianaki.core.ui.adapter.BaseRecyclerAdapter
 import com.github.mohammadsianaki.core.ui.adapter.BaseViewHolder
 import com.github.mohammadsianaki.core.ui.adapter.RecyclerData
-import com.github.mohammadsianaki.tavansazan.presentation.ViewTypes
-import com.github.mohammadsianaki.tavansazan.presentation.home.promo.PromoSectionViewHolder
-import com.github.mohammadsianaki.tavansazan.presentation.home.service.ServicesSectionViewHolder
+import com.github.mohammadsianaki.tavansazan.presentation.model.ViewTypes
+import com.github.mohammadsianaki.tavansazan.presentation.ui.home.promo.PromoSectionViewHolder
+import com.github.mohammadsianaki.tavansazan.presentation.ui.home.service.ServicesSectionViewHolder
 
-class HomeAdapter : BaseRecyclerAdapter<TestData>() {
+class HomeAdapter : BaseRecyclerAdapter<HomePageItemModel>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int

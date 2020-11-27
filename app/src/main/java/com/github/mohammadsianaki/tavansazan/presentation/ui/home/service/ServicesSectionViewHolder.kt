@@ -1,11 +1,10 @@
-package com.github.mohammadsianaki.tavansazan.presentation.home.service
+package com.github.mohammadsianaki.tavansazan.presentation.ui.home.service
 
 import com.github.mohammadsianaki.core.databinding.ItemSectionBinding
 import com.github.mohammadsianaki.core.ui.adapter.BaseRecyclerAdapter
 import com.github.mohammadsianaki.core.ui.adapter.SectionOrientation
 import com.github.mohammadsianaki.core.ui.adapter.SectionRecyclerData
 import com.github.mohammadsianaki.core.ui.adapter.SectionViewHolder
-import com.github.mohammadsianaki.tavansazan.presentation.ViewTypes
 
 class ServicesSectionViewHolder(
     binding: ItemSectionBinding

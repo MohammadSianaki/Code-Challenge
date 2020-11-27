@@ -1,9 +1,10 @@
-package com.github.mohammadsianaki.tavansazan.presentation
+package com.github.mohammadsianaki.tavansazan.presentation.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.github.mohammadsianaki.tavansazan.R
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.activity_main.*
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {

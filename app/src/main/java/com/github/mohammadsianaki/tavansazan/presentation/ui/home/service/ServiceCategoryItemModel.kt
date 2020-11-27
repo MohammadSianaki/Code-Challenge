@@ -1,10 +1,9 @@
-package com.github.mohammadsianaki.tavansazan.presentation.home.service
+package com.github.mohammadsianaki.tavansazan.presentation.ui.home.service
 
 import com.github.mohammadsianaki.core.ui.adapter.RecyclerData
-import com.github.mohammadsianaki.tavansazan.presentation.ViewTypes
 
 data class ServiceCategoryItemModel(
-    val hasNewBadge: String,
+    val hasNewBadge: Boolean,
     val id: String,
     val slug: String,
     val title: String,

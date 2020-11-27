@@ -48,8 +48,8 @@ data class Descriptions(
 data class Image(
     val originalUrl: String,
     @SerializedName("originalUrl@2x") val originalUrl2x: String,
-    @SerializedName("originalUrl@2x") val originalUrl3x: String,
-    @SerializedName("originalUrl@2x") val originalUrl4x: String,
+    @SerializedName("originalUrl@3x") val originalUrl3x: String,
+    @SerializedName("originalUrl@4x") val originalUrl4x: String,
     val originalUrlPDF: String,
     val originalUrlSVG: String
 )

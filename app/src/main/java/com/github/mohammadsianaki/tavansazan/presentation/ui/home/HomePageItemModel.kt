@@ -9,8 +9,7 @@ data class HomePageItemModel(
     val services: List<ServiceCategoryItemModel>,
     val promos: List<PromoItemModel>
 ) : RecyclerData {
-    override val viewType: Int
-        get() = TODO("Not yet implemented")
+    override val viewType: Int = 0
 }
 
 

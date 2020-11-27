@@ -6,17 +6,17 @@ import com.github.mohammadsianaki.core.databinding.ItemSectionBinding
 import com.github.mohammadsianaki.core.ui.adapter.BaseRecyclerAdapter
 import com.github.mohammadsianaki.core.ui.adapter.BaseViewHolder
 import com.github.mohammadsianaki.core.ui.adapter.RecyclerData
-import com.github.mohammadsianaki.tavansazan.databinding.ItemServiceBinding
 import com.github.mohammadsianaki.tavansazan.presentation.ViewTypes
 import com.github.mohammadsianaki.tavansazan.presentation.home.promo.PromoSectionViewHolder
+import com.github.mohammadsianaki.tavansazan.presentation.home.service.ServicesSectionViewHolder
 
 class HomeAdapter : BaseRecyclerAdapter<RecyclerData>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
     ): BaseViewHolder<RecyclerData> = when (viewType) {
-        ViewTypes.SERVICES.value -> ServicesViewHolder(
-            ItemServiceBinding.inflate(
+        ViewTypes.SERVICES.value -> ServicesSectionViewHolder(
+            ItemSectionBinding.inflate(
                 LayoutInflater.from(parent.context), parent, false
             )
         )

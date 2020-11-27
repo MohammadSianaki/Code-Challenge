@@ -19,5 +19,5 @@ data class PromoSection(
     override val items: List<PromoItemModel> = promos
     override val sectionTitle: String = sectionLabel
     override val orientation: SectionOrientation = SectionOrientation.HORIZONTAL
-    override val viewType: Int = ViewTypes.PROMO.value
+    override val viewType: Int = com.github.mohammadsianaki.tavansazan.presentation.model.ViewTypes.PROMO.value
 }

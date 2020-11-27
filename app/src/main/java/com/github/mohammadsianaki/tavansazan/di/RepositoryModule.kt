@@ -6,8 +6,11 @@ import com.github.mohammadsianaki.tavansazan.domain.repository.AppRepository
 import com.github.mohammadsianaki.tavansazan.domain.repository.RemoteHomeDataSource
 import dagger.Binds
 import dagger.Module
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ApplicationComponent
 
 @Module
+@InstallIn(ApplicationComponent::class)
 abstract class RepositoryModule {
 
     @Binds

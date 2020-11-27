@@ -5,8 +5,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.github.mohammadsianaki.core.networkconnection.NetworkState
 import com.github.mohammadsianaki.core.ui.RecyclerFragment
+import com.github.mohammadsianaki.core.utils.Resource
 import com.github.mohammadsianaki.tavansazan.databinding.FragmentHomeBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlin.properties.Delegates
 
 @AndroidEntryPoint
 class HomeFragment : RecyclerFragment<FragmentHomeBinding, HomePageItemModel, HomeViewModel>() {
@@ -23,8 +25,21 @@ class HomeFragment : RecyclerFragment<FragmentHomeBinding, HomePageItemModel, Ho
         viewModel.loadData()
     }
 
+    override fun handleSuccessState(resource: Resource<List<HomePageItemModel>>?) {
+        checkNotNull(resource)
+        super.handleSuccessState(resource)
+        with(resource.data!![0].header) {
+            viewBinding.homeTitle.text = title
+            viewBinding.homeCaption.text = subtitle
+        }
+    }
+
     override fun onNetworkStateChanged(networkState: NetworkState) {
-        TODO("Not yet implemented")
+        Delegates.observable(networkState) { _, oldValue, newValue ->
+            if (oldValue == NetworkState.DISCONNECTED && newValue == NetworkState.CONNECTED) {
+                loadData()
+            }
+        }
     }
 
 }

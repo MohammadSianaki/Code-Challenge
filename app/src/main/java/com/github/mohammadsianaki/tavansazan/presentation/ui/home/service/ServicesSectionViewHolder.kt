@@ -19,5 +19,5 @@ data class ServiceSection(
     override val items: List<ServiceCategoryItemModel> = services
     override val sectionTitle: String = sectionLabel
     override val orientation: SectionOrientation = SectionOrientation.GRID_VERTICAL
-    override val viewType: Int = ViewTypes.SERVICES.value
+    override val viewType: Int = com.github.mohammadsianaki.tavansazan.presentation.model.ViewTypes.SERVICES.value
 }

@@ -10,7 +10,7 @@ import com.github.mohammadsianaki.tavansazan.presentation.ViewTypes
 import com.github.mohammadsianaki.tavansazan.presentation.home.promo.PromoSectionViewHolder
 import com.github.mohammadsianaki.tavansazan.presentation.home.service.ServicesSectionViewHolder
 
-class HomeAdapter : BaseRecyclerAdapter<RecyclerData>() {
+class HomeAdapter : BaseRecyclerAdapter<TestData>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int

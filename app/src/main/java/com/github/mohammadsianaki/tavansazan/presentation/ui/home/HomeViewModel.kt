@@ -1,7 +1,9 @@
 package com.github.mohammadsianaki.tavansazan.presentation.ui.home
 
 import androidx.hilt.lifecycle.ViewModelInject
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.github.mohammadsianaki.core.extensions.asLiveData
 import com.github.mohammadsianaki.core.functional.fold
 import com.github.mohammadsianaki.core.ui.RecyclerViewModel
 import com.github.mohammadsianaki.core.ui.adapter.RecyclerData
@@ -14,6 +16,9 @@ import kotlinx.coroutines.launch
 class HomeViewModel @ViewModelInject constructor(
     private val repository: AppRepository
 ) : RecyclerViewModel<RecyclerData>() {
+    private val __headerLiveData = MutableLiveData<HomePageHeaderItemModel>()
+    val headerLiveData = __headerLiveData.asLiveData()
+
     override fun loadData() {
         _liveData.value = Resource.loading()
         viewModelScope.launch {
@@ -22,6 +27,7 @@ class HomeViewModel @ViewModelInject constructor(
             }.fold(
                 ifSuccess = { pageEntity ->
                     _liveData.value = Resource.success(pageEntity.toHomePageItemModel().items)
+                    __headerLiveData.value = pageEntity.toHomePageItemModel().header
                 },
                 ifFailure = { errorHolder ->
                     _liveData.value = Resource.error(errorHolder)

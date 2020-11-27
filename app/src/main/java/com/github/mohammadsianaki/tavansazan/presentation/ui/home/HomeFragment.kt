@@ -1,8 +1,10 @@
 package com.github.mohammadsianaki.tavansazan.presentation.ui.home
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import com.github.mohammadsianaki.core.networkconnection.NetworkState
 import com.github.mohammadsianaki.core.ui.RecyclerFragment
 import com.github.mohammadsianaki.core.ui.adapter.RecyclerData
@@ -26,13 +28,12 @@ class HomeFragment : RecyclerFragment<FragmentHomeBinding, RecyclerData, HomeVie
         viewModel.loadData()
     }
 
-    override fun handleSuccessState(resource: Resource<List<RecyclerData>>?) {
-        checkNotNull(resource)
-        super.handleSuccessState(resource)
-//        with(resource.data!![0].header) {
-//            viewBinding.homeTitle.text = title
-//            viewBinding.homeCaption.text = subtitle
-//        }
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        viewModel.headerLiveData.observe(viewLifecycleOwner, Observer {
+            viewBinding.homeTitle.text = it.title
+            viewBinding.homeCaption.text = it.subtitle
+        })
     }
 
     override fun onNetworkStateChanged(networkState: NetworkState) {

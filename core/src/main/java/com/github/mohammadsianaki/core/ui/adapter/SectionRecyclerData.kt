@@ -6,8 +6,12 @@ interface SectionRecyclerData<T : RecyclerData> : RecyclerData {
     val orientation: SectionOrientation
 }
 
-interface GridSectionRecyclerData<T> : RecyclerData {
+interface GridSectionRecyclerData<T : RecyclerData> : SectionRecyclerData<T> {
     val spanCount: Int
+
+    companion object {
+        const val DEFAULT_SPAN_COUNT = 2
+    }
 }
 
 enum class SectionOrientation(val value: Int) {

@@ -7,12 +7,14 @@ import com.github.mohammadsianaki.tavansazan.domain.entity.HomePageServiceEntity
 import com.github.mohammadsianaki.tavansazan.presentation.ui.home.HomePageHeaderItemModel
 import com.github.mohammadsianaki.tavansazan.presentation.ui.home.HomePageItemModel
 import com.github.mohammadsianaki.tavansazan.presentation.ui.home.promo.PromoItemModel
+import com.github.mohammadsianaki.tavansazan.presentation.ui.home.promo.PromoSection
 import com.github.mohammadsianaki.tavansazan.presentation.ui.home.service.ServiceCategoryItemModel
+import com.github.mohammadsianaki.tavansazan.presentation.ui.home.service.ServiceSection
 
 fun HomePageEntity.toHomePageItemModel() = HomePageItemModel(
     header.toHeaderItemModel(),
-    services.map { it.toServiceItemModel() },
-    promotions.map { it.toPromoItemModel() }
+    ServiceSection("Services", services.map { it.toServiceItemModel() }),
+    PromoSection("Promotions", promotions.map { it.toPromoItemModel() })
 )
 
 fun HomePageHeaderEntity.toHeaderItemModel() = HomePageHeaderItemModel(title, subTitles)

@@ -4,6 +4,7 @@ import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.viewModelScope
 import com.github.mohammadsianaki.core.functional.fold
 import com.github.mohammadsianaki.core.ui.RecyclerViewModel
+import com.github.mohammadsianaki.core.ui.adapter.RecyclerData
 import com.github.mohammadsianaki.core.utils.Resource
 import com.github.mohammadsianaki.core.utils.withIO
 import com.github.mohammadsianaki.tavansazan.domain.repository.AppRepository
@@ -12,7 +13,7 @@ import kotlinx.coroutines.launch
 
 class HomeViewModel @ViewModelInject constructor(
     private val repository: AppRepository
-) : RecyclerViewModel<HomePageItemModel>() {
+) : RecyclerViewModel<RecyclerData>() {
     override fun loadData() {
         _liveData.value = Resource.loading()
         viewModelScope.launch {
@@ -20,7 +21,7 @@ class HomeViewModel @ViewModelInject constructor(
                 repository.fetchDashboardData()
             }.fold(
                 ifSuccess = { pageEntity ->
-                    _liveData.value = Resource.success(listOf(pageEntity.toHomePageItemModel()))
+                    _liveData.value = Resource.success(pageEntity.toHomePageItemModel().items)
                 },
                 ifFailure = { errorHolder ->
                     _liveData.value = Resource.error(errorHolder)

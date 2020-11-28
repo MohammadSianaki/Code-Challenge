@@ -9,6 +9,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
 import com.github.mohammadsianaki.core.extensions.gone
+import com.github.mohammadsianaki.core.extensions.observerNavigationCommands
 import com.github.mohammadsianaki.core.extensions.showMessage
 import com.github.mohammadsianaki.core.networkconnection.NetworkStateListener
 import com.github.mohammadsianaki.core.networkconnection.manager.ReceiverManager
@@ -36,6 +37,7 @@ abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel> : Fragment(),
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initUI(view)
+        observerNavigationCommands(viewModel.navigationCommands)
     }
 
     override fun onStart() {

@@ -1,7 +1,6 @@
 package com.github.mohammadsianaki.tavansazan.presentation.ui.home
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
@@ -11,6 +10,8 @@ import com.github.mohammadsianaki.core.ui.RecyclerFragment
 import com.github.mohammadsianaki.core.ui.adapter.RecyclerData
 import com.github.mohammadsianaki.core.ui.adapter.SectionViewHolder
 import com.github.mohammadsianaki.tavansazan.databinding.FragmentHomeBinding
+import com.github.mohammadsianaki.tavansazan.presentation.ui.home.promo.PromoSection
+import com.github.mohammadsianaki.tavansazan.presentation.ui.home.service.ServiceSection
 import dagger.hilt.android.AndroidEntryPoint
 import kotlin.properties.Delegates
 
@@ -20,7 +21,10 @@ class HomeFragment : RecyclerFragment<FragmentHomeBinding, RecyclerData, HomeVie
     private fun sectionClickHandler(): SectionViewHolder.SectionViewHolderClickHandler =
         object : SectionViewHolder.SectionViewHolderClickHandler {
             override fun <SectionItem> onItemClicked(item: SectionItem, position: Int) {
-                Log.d("<<<<tag", "item=$item, position=$position")
+                when (item) {
+                    is ServiceSection -> viewModel.onServiceItemClicked(item)
+                    is PromoSection -> viewModel.onPromoItemClicked(item)
+                }
             }
         }
 

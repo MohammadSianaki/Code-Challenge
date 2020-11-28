@@ -5,12 +5,16 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.github.mohammadsianaki.core.extensions.asLiveData
 import com.github.mohammadsianaki.core.functional.fold
+import com.github.mohammadsianaki.core.navigation.NavigationCommand
 import com.github.mohammadsianaki.core.ui.RecyclerViewModel
 import com.github.mohammadsianaki.core.ui.adapter.RecyclerData
 import com.github.mohammadsianaki.core.utils.Resource
 import com.github.mohammadsianaki.core.utils.withIO
 import com.github.mohammadsianaki.tavansazan.domain.repository.AppRepository
 import com.github.mohammadsianaki.tavansazan.presentation.model.toHomePageItemModel
+import com.github.mohammadsianaki.tavansazan.presentation.ui.home.promo.PromoSection
+import com.github.mohammadsianaki.tavansazan.presentation.ui.home.service.ServiceSection
+import com.github.mohammadsianaki.tavansazan.presentation.utils.Ids
 import kotlinx.coroutines.launch
 
 class HomeViewModel @ViewModelInject constructor(
@@ -34,5 +38,16 @@ class HomeViewModel @ViewModelInject constructor(
                 }
             )
         }
+    }
+
+    fun onServiceItemClicked(item: ServiceSection) {
+        _navigationCommands.value = NavigationCommand.ForwardTo(
+            Ids.actionHomeFragmentToServiceDetailFragment,
+            null
+        )
+    }
+
+    fun onPromoItemClicked(item: PromoSection) {
+
     }
 }

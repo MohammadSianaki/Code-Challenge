@@ -7,8 +7,9 @@ import com.github.mohammadsianaki.core.ui.adapter.SectionRecyclerData
 import com.github.mohammadsianaki.core.ui.adapter.SectionViewHolder
 
 class PromoSectionViewHolder(
-    binding: ItemSectionBinding
-) : SectionViewHolder<PromoSection, PromoItemModel>(binding) {
+    binding: ItemSectionBinding,
+    clickHandler: SectionViewHolderClickHandler?
+) : SectionViewHolder<PromoSection, PromoItemModel>(binding,clickHandler) {
     override val adapter: BaseRecyclerAdapter<PromoItemModel> = PromoAdapter()
 }
 

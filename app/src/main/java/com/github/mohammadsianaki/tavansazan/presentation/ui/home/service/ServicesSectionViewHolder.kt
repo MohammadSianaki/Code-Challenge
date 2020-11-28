@@ -4,8 +4,9 @@ import com.github.mohammadsianaki.core.databinding.ItemSectionBinding
 import com.github.mohammadsianaki.core.ui.adapter.*
 
 class ServicesSectionViewHolder(
-    binding: ItemSectionBinding
-) : SectionViewHolder<ServiceSection, ServiceCategoryItemModel>(binding) {
+    binding: ItemSectionBinding,
+    clickHandler: SectionViewHolderClickHandler?
+) : SectionViewHolder<ServiceSection, ServiceCategoryItemModel>(binding,clickHandler) {
     override val adapter: BaseRecyclerAdapter<ServiceCategoryItemModel> = ServiceAdapter()
 }
 

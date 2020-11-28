@@ -6,6 +6,7 @@ import com.github.mohammadsianaki.core.databinding.ItemSectionBinding
 import com.github.mohammadsianaki.core.ui.adapter.BaseRecyclerAdapter
 import com.github.mohammadsianaki.core.ui.adapter.BaseViewHolder
 import com.github.mohammadsianaki.core.ui.adapter.RecyclerData
+import com.github.mohammadsianaki.core.ui.adapter.SectionViewHolder
 import com.github.mohammadsianaki.tavansazan.presentation.model.ViewTypes
 import com.github.mohammadsianaki.tavansazan.presentation.ui.home.promo.PromoItemModel
 import com.github.mohammadsianaki.tavansazan.presentation.ui.home.promo.PromoSection
@@ -15,6 +16,8 @@ import com.github.mohammadsianaki.tavansazan.presentation.ui.home.service.Servic
 import com.github.mohammadsianaki.tavansazan.presentation.ui.home.service.ServicesSectionViewHolder
 
 class HomeAdapter : BaseRecyclerAdapter<RecyclerData>() {
+    var sectionViewHolderClickHandler: SectionViewHolder.SectionViewHolderClickHandler? = null
+
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -22,14 +25,21 @@ class HomeAdapter : BaseRecyclerAdapter<RecyclerData>() {
         ViewTypes.SERVICES.value -> ServicesSectionViewHolder(
             ItemSectionBinding.inflate(
                 LayoutInflater.from(parent.context), parent, false
-            )
+            ),
+            sectionViewHolderClickHandler
         ).also {
-            it.bindData(ServiceSection("Services", items.filterIsInstance<ServiceCategoryItemModel>()))
+            it.bindData(
+                ServiceSection(
+                    "Services",
+                    items.filterIsInstance<ServiceCategoryItemModel>()
+                )
+            )
         }
         ViewTypes.PROMO.value -> PromoSectionViewHolder(
             ItemSectionBinding.inflate(
                 LayoutInflater.from(parent.context), parent, false
-            )
+            ),
+            sectionViewHolderClickHandler
         ).also {
             it.bindData(PromoSection("Promotions", items.filterIsInstance<PromoItemModel>()))
         }

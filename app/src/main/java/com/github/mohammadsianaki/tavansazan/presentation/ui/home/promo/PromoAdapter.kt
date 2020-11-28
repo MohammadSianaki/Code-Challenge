@@ -12,20 +12,23 @@ class PromoAdapter : BaseRecyclerAdapter<PromoItemModel>() {
         parent: ViewGroup,
         viewType: Int
     ): BaseViewHolder<PromoItemModel> = PromoViewHolder(
-        ItemPromoBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        ItemPromoBinding.inflate(LayoutInflater.from(parent.context), parent, false),
+        onItemClickListener
     )
 
     override fun onViewRecycled(holder: BaseViewHolder<PromoItemModel>) {
         check(holder is PromoViewHolder)
-        Glide.with(holder.binding.promoImage.context).clear(holder.binding.promoImage)
+        Glide.with(holder.itemView.context).clear(holder.binding.promoImage)
     }
 }
 
 
 class PromoViewHolder(
-    val binding: ItemPromoBinding
+    val binding: ItemPromoBinding,
+    private val onItemClickListener: (item: PromoItemModel, position: Int) -> Unit
 ) : BaseViewHolder<PromoItemModel>(binding.root) {
     override fun bindData(item: PromoItemModel) {
+        binding.root.setOnClickListener { onItemClickListener(item, adapterPosition) }
         with(binding) {
             Glide.with(promoImage.context).load(item.imageUrl).into(promoImage)
         }

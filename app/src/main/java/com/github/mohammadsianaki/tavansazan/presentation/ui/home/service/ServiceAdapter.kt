@@ -12,14 +12,17 @@ class ServiceAdapter : BaseRecyclerAdapter<ServiceCategoryItemModel>() {
         parent: ViewGroup,
         viewType: Int
     ): BaseViewHolder<ServiceCategoryItemModel> = ServiceViewHolder(
-        ItemServiceBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        ItemServiceBinding.inflate(LayoutInflater.from(parent.context), parent, false),
+        onItemClickListener
     )
 }
 
 class ServiceViewHolder(
-    private val binding: ItemServiceBinding
+    private val binding: ItemServiceBinding,
+    private val onItemClickListener: (item: ServiceCategoryItemModel, position: Int) -> Unit
 ) : BaseViewHolder<ServiceCategoryItemModel>(binding.root) {
     override fun bindData(item: ServiceCategoryItemModel) {
+        binding.root.setOnClickListener { onItemClickListener(item, adapterPosition) }
         with(binding) {
             Glide.with(serviceLogo.context).load(item.imageUrl).into(serviceLogo)
             serviceTitle.text = item.title

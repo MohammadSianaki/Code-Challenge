@@ -7,20 +7,22 @@ import com.github.mohammadsianaki.core.databinding.ItemSectionBinding
 
 abstract class SectionViewHolder<Section, SectionItem>(
     private val binding: ItemSectionBinding,
-    private val eventHandler:SectionViewHolderEventHandler?=null
+    private val clickHandler: SectionViewHolderClickHandler?
 ) : BaseViewHolder<Section>(binding.root)
         where  Section : SectionRecyclerData<SectionItem>, SectionItem : RecyclerData {
 
     abstract val adapter: BaseRecyclerAdapter<SectionItem>
 
-    interface SectionViewHolderEventHandler {
-        fun <SectionItem> onItemClicked(item: SectionItem,position:Int)
+    interface SectionViewHolderClickHandler {
+        fun <SectionItem> onItemClicked(item: SectionItem, position: Int)
     }
 
 
     override fun bindData(section: Section) {
         binding.sectionLabel.text = section.sectionTitle
-//        adapter.onItemClickListener = eventHandler::onItemClicked
+        clickHandler?.let {
+            adapter.onItemClickListener = it::onItemClicked
+        }
         binding.sectionRecyclerView.apply {
             adapter = this@SectionViewHolder.adapter.apply {
                 items = section.items.toMutableList()

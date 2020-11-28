@@ -1,6 +1,6 @@
 package com.github.mohammadsianaki.tavansazan.di
 
-import com.github.mohammadsianaki.tavansazan.data.api.home.HomeService
+import com.github.mohammadsianaki.tavansazan.data.api.home.WebService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -15,5 +15,5 @@ object WebServiceModule {
 
     @Singleton
     @Provides
-    fun provideHomeService(retrofit: Retrofit): HomeService = retrofit.create()
+    fun provideHomeService(retrofit: Retrofit): WebService = retrofit.create()
 }

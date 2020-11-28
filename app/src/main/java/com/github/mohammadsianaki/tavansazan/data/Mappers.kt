@@ -1,12 +1,11 @@
 package com.github.mohammadsianaki.tavansazan.data
 
+import com.github.mohammadsianaki.tavansazan.data.api.detail.RemoteServiceDetailEntity
+import com.github.mohammadsianaki.tavansazan.data.api.detail.ServiceDetailResponseDto
 import com.github.mohammadsianaki.tavansazan.data.api.home.HomeResponseDto
 import com.github.mohammadsianaki.tavansazan.data.api.home.RemoteCategoryEntity
 import com.github.mohammadsianaki.tavansazan.data.api.home.RemotePromotionEntity
-import com.github.mohammadsianaki.tavansazan.domain.entity.HomePageEntity
-import com.github.mohammadsianaki.tavansazan.domain.entity.HomePageHeaderEntity
-import com.github.mohammadsianaki.tavansazan.domain.entity.HomePagePromoEntity
-import com.github.mohammadsianaki.tavansazan.domain.entity.HomePageServiceEntity
+import com.github.mohammadsianaki.tavansazan.domain.entity.*
 
 
 fun HomeResponseDto.toHomePageEntity() = HomePageEntity(
@@ -22,3 +21,26 @@ fun RemoteCategoryEntity.toHomePageServiceEntity() = HomePageServiceEntity(
 fun RemotePromotionEntity.toHomePagePromoEntity() = HomePagePromoEntity(
     image.originalUrl
 )
+
+fun ServiceDetailResponseDto.toServiceDetailEntity() = ServiceDetailEntity(
+    slug,
+    title,
+    description,
+    image.originalUrl,
+    payload.map { it.toServiceDetailPurchasePlansEntity() }
+)
+
+fun RemoteServiceDetailEntity.toServiceDetailPurchasePlansEntity() =
+    ServiceDetailPurchasePlansEntity(
+        title,
+        subTitle,
+        shortDescription,
+        isActive,
+        isSpecial,
+        slug,
+        basePrice,
+        listBasePrice,
+        hasDiscount,
+        discountPercentage,
+        image.originalUrl
+    )

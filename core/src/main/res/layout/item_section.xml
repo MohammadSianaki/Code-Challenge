@@ -9,7 +9,8 @@
         android:id="@+id/sectionLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="@dimen/double_margin"
+        android:layout_marginTop="@dimen/double_margin"
+        android:layout_marginStart="@dimen/default_margin"
         android:fontFamily="@font/regular"
         android:textColor="@color/color_text_secondary"
         android:textSize="14sp"
@@ -17,7 +18,8 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/sectionRecyclerView"
+        android:overScrollMode="never"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent" />
 
 </LinearLayout>

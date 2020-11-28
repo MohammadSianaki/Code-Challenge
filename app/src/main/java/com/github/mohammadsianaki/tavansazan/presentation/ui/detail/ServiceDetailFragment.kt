@@ -5,9 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.github.mohammadsianaki.core.ui.RecyclerFragment
 import com.github.mohammadsianaki.tavansazan.R
+import com.github.mohammadsianaki.tavansazan.databinding.ServiceDetailFragmentBinding
 
-class ServiceDetailFragment : Fragment() {
+class ServiceDetailFragment : RecyclerFragment<ServiceDetailFragmentBinding,,ServiceDetailViewModel>() {
 
 
     override fun onCreateView(

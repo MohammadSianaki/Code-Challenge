@@ -15,7 +15,7 @@
             app:destination="@id/serviceDetailFragment" />
     </fragment>
     <fragment
-        tools:layout="@layout/service_detail_fragment"
+        tools:layout="@layout/fragment_service_detail"
         android:id="@+id/serviceDetailFragment"
         android:name="com.github.mohammadsianaki.tavansazan.presentation.ui.detail.ServiceDetailFragment"
         android:label="ServiceDetailFragment" />

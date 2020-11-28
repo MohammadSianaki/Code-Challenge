@@ -17,7 +17,7 @@ import com.github.mohammadsianaki.core.ui.adapter.RecyclerData
 import com.github.mohammadsianaki.core.utils.Resource
 import com.github.mohammadsianaki.core.utils.ResourceState
 
-abstract class RecyclerFragment<VB : ViewBinding , Data : RecyclerData, VM : RecyclerViewModel<Data>> :
+abstract class RecyclerFragment<VB : ViewBinding, Data : RecyclerData, VM : RecyclerViewModel<Data>> :
     BaseFragment<VB, VM>() {
     private var _recyclerView: RecyclerView? = null
     protected val recyclerView
@@ -36,6 +36,10 @@ abstract class RecyclerFragment<VB : ViewBinding , Data : RecyclerData, VM : Rec
         get() = _errorView!!
 
     protected abstract val recyclerAdapter: BaseRecyclerAdapter<Data>
+    protected open val recyclerViewLayoutManager: RecyclerView.LayoutManager =
+        LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+    protected open val recyclerItemAnimator: RecyclerView.ItemAnimator = DefaultItemAnimator()
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         loadData()
@@ -48,9 +52,8 @@ abstract class RecyclerFragment<VB : ViewBinding , Data : RecyclerData, VM : Rec
         _progressBar = viewBinding.root.findViewById(R.id.loadingView)
         _recyclerView = viewBinding.root.findViewById<RecyclerView>(R.id.recyclerView).apply {
             adapter = recyclerAdapter
-            layoutManager =
-                LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-            itemAnimator = DefaultItemAnimator()
+            layoutManager = recyclerViewLayoutManager
+            itemAnimator = recyclerItemAnimator
         }
     }
 
@@ -84,6 +87,7 @@ abstract class RecyclerFragment<VB : ViewBinding , Data : RecyclerData, VM : Rec
         hideEmptyView()
         hideRecyclerView()
     }
+
     protected open fun handleFailureState(resource: Resource<*>?) {
         hideLoading()
         hideEmptyView()
@@ -108,11 +112,11 @@ abstract class RecyclerFragment<VB : ViewBinding , Data : RecyclerData, VM : Rec
         }
     }
 
-    protected  fun showEmptyView() = emptyView.visible()
+    protected fun showEmptyView() = emptyView.visible()
     protected fun hideEmptyView() = emptyView.gone()
     protected fun showLoading() = progressBar.visible()
     protected fun hideLoading() = progressBar.gone()
-    protected  fun showErrorView() = errorView.visible()
+    protected fun showErrorView() = errorView.visible()
     protected fun hideErrorView() = errorView.gone()
     protected abstract fun loadData()
 }

@@ -1,22 +1,41 @@
 package com.github.mohammadsianaki.tavansazan.presentation.ui.detail
 
-import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.github.mohammadsianaki.core.networkconnection.NetworkState
 import com.github.mohammadsianaki.core.ui.RecyclerFragment
-import com.github.mohammadsianaki.tavansazan.R
 import com.github.mohammadsianaki.tavansazan.databinding.ServiceDetailFragmentBinding
+import dagger.hilt.android.AndroidEntryPoint
+import kotlin.properties.Delegates
 
-class ServiceDetailFragment : RecyclerFragment<ServiceDetailFragmentBinding,,ServiceDetailViewModel>() {
+@AndroidEntryPoint
+class ServiceDetailFragment :
+    RecyclerFragment<ServiceDetailFragmentBinding, ServiceDetailPurchasePlansItemModel, ServiceDetailViewModel>() {
+    override val viewModel: ServiceDetailViewModel by viewModels()
+    override val recyclerAdapter: ServicePurchasePlansAdapter by lazy(LazyThreadSafetyMode.NONE) {
+        ServicePurchasePlansAdapter()
+    }
+    override val recyclerViewLayoutManager: RecyclerView.LayoutManager =
+        GridLayoutManager(requireContext(), 2, RecyclerView.VERTICAL, false)
 
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.service_detail_fragment, container, false)
+    override fun loadData() {
+        viewModel.loadData()
     }
 
+    override fun createViewBinding(container: ViewGroup?): ServiceDetailFragmentBinding? {
+        return ServiceDetailFragmentBinding.inflate(
+            LayoutInflater.from(container?.context), container, false
+        )
+    }
+
+    override fun onNetworkStateChanged(networkState: NetworkState) {
+        Delegates.observable(networkState) { _, oldValue, newValue ->
+            if (oldValue == NetworkState.DISCONNECTED && newValue == NetworkState.CONNECTED) {
+                loadData()
+            }
+        }
+    }
 }

@@ -1,9 +1,8 @@
 package com.github.mohammadsianaki.tavansazan.presentation.model
 
-import com.github.mohammadsianaki.tavansazan.domain.entity.HomePageEntity
-import com.github.mohammadsianaki.tavansazan.domain.entity.HomePageHeaderEntity
-import com.github.mohammadsianaki.tavansazan.domain.entity.HomePagePromoEntity
-import com.github.mohammadsianaki.tavansazan.domain.entity.HomePageServiceEntity
+import com.github.mohammadsianaki.tavansazan.domain.entity.*
+import com.github.mohammadsianaki.tavansazan.presentation.ui.detail.ServiceDetailItemModel
+import com.github.mohammadsianaki.tavansazan.presentation.ui.detail.ServiceDetailPurchasePlansItemModel
 import com.github.mohammadsianaki.tavansazan.presentation.ui.home.HomePageHeaderItemModel
 import com.github.mohammadsianaki.tavansazan.presentation.ui.home.HomePageItemModel
 import com.github.mohammadsianaki.tavansazan.presentation.ui.home.promo.PromoItemModel
@@ -32,4 +31,27 @@ fun HomePageServiceEntity.toServiceItemModel() = ServiceCategoryItemModel(
 )
 
 fun HomePagePromoEntity.toPromoItemModel() = PromoItemModel(imageUrl)
+
+fun ServiceDetailEntity.toServiceDetailItemModel() = ServiceDetailItemModel(
+    slug,
+    title,
+    descriptions,
+    imageUrl,
+    purchasePlans.map { it.toServiceDetailPurchasePlansItemModel() }
+)
+
+fun ServiceDetailPurchasePlansEntity.toServiceDetailPurchasePlansItemModel() =
+    ServiceDetailPurchasePlansItemModel(
+        title,
+        subTitle,
+        shortDescription,
+        isActive,
+        isSpecial,
+        slug,
+        basePrice,
+        listBasePrice,
+        hasDiscount,
+        discountPercentage,
+        imageUrl
+    )
 

@@ -39,6 +39,9 @@ class PurchasePlanViewHolder(
                         Colors.dark_blue
                     )
                 )
+                serviceTitle.setTextColor(ContextCompat.getColor(root.context, Colors.white))
+                serviceSubTitle.setTextColor(ContextCompat.getColor(root.context, Colors.white))
+                serviceDescription.setTextColor(ContextCompat.getColor(root.context, Colors.white))
             }
             if (item.hasDiscount) {
                 badge.text = item.discountPercentage.toHumanReadablePercent()

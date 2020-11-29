@@ -9,6 +9,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.github.mohammadsianaki.core.extensions.observeInFragment
 import com.github.mohammadsianaki.core.networkconnection.NetworkState
 import com.github.mohammadsianaki.core.ui.RecyclerFragment
@@ -42,6 +43,7 @@ class ServiceDetailFragment :
         observeInFragment(viewModel.headerLiveData){
             viewBinding.serviceTitle.text = it.title
             viewBinding.serviceDescription.text = it.description
+            Glide.with(requireContext()).load(it.imageUrl).into(viewBinding.serviceLogo)
         }
     }
 

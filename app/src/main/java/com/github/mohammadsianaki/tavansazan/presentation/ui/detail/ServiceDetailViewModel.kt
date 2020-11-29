@@ -10,7 +10,6 @@ import com.github.mohammadsianaki.core.utils.Resource
 import com.github.mohammadsianaki.core.utils.withIO
 import com.github.mohammadsianaki.tavansazan.domain.repository.AppRepository
 import com.github.mohammadsianaki.tavansazan.presentation.model.toServiceDetailItemModel
-import com.github.mohammadsianaki.tavansazan.presentation.ui.home.HomePageHeaderItemModel
 import kotlinx.coroutines.launch
 
 class ServiceDetailViewModel @ViewModelInject constructor(
@@ -26,7 +25,7 @@ class ServiceDetailViewModel @ViewModelInject constructor(
                     with(serviceDetailEntity.toServiceDetailItemModel()) {
                         _liveData.value =
                             Resource.success(serviceDetailEntity.toServiceDetailItemModel().purchasePlans)
-                        __headerLiveData.value = ServiceDetailInfo(title,descriptions)
+                        __headerLiveData.value = ServiceDetailInfo(title,descriptions,imageUrl)
                     }
                 }, ifFailure = { errorHolder ->
                     _liveData.value = Resource.error(errorHolder)

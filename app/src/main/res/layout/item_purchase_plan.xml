@@ -5,6 +5,7 @@
     android:layout_width="170dp"
     android:layout_height="200dp"
     android:layout_margin="@dimen/default_margin"
+    android:foreground="?android:attr/selectableItemBackground"
     app:cardCornerRadius="10dp"
     app:cardElevation="3dp">
 
@@ -27,9 +28,9 @@
             android:layout_height="20dp"
             android:layout_marginEnd="@dimen/double_margin"
             android:background="@drawable/badge_background"
+            android:gravity="center"
             android:textColor="@color/white"
             android:textSize="12sp"
-            android:gravity="center"
             app:layout_constraintBottom_toBottomOf="@+id/serviceLogo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"

@@ -28,9 +28,9 @@
             android:layout_width="32dp"
             android:layout_height="20dp"
             android:layout_marginEnd="@dimen/double_margin"
-            android:padding="0dp"
             android:background="@drawable/badge_background"
             android:gravity="center"
+            android:padding="0dp"
             android:textColor="@color/white"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="@+id/serviceLogo"
@@ -38,6 +38,7 @@
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toEndOf="@+id/serviceLogo"
             app:layout_constraintTop_toTopOf="@+id/serviceLogo"
+            app:layout_constraintVertical_bias="0.0"
             tools:text="%20" />
 
         <com.google.android.material.textview.MaterialTextView

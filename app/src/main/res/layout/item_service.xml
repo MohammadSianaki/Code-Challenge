@@ -22,15 +22,19 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:srcCompat="@drawable/carwash" />
 
-        <androidx.appcompat.widget.AppCompatImageView
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/badge"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="32dp"
+            android:layout_height="20dp"
+            android:background="@drawable/badge_background"
+            android:gravity="center"
+            android:text="@string/new_badge"
+            android:textColor="@color/white"
+            android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.741"
             app:layout_constraintStart_toEndOf="@+id/serviceLogo"
-            app:layout_constraintTop_toTopOf="@+id/serviceLogo"
-            tools:srcCompat="@drawable/badge" />
+            app:layout_constraintTop_toTopOf="@+id/serviceLogo" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/serviceTitle"

@@ -1,5 +1,6 @@
 package com.github.mohammadsianaki.tavansazan.presentation.ui.detail
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +9,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.github.mohammadsianaki.core.extensions.observeInFragment
 import com.github.mohammadsianaki.core.networkconnection.NetworkState
 import com.github.mohammadsianaki.core.ui.RecyclerFragment
 import com.github.mohammadsianaki.tavansazan.databinding.FragmentServiceDetailBinding
@@ -33,6 +35,14 @@ class ServiceDetailFragment :
     override fun initUI(rootView: View) {
         super.initUI(rootView)
         viewBinding.toolbar.backButton.setOnClickListener { findNavController().popBackStack() }
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        observeInFragment(viewModel.headerLiveData){
+            viewBinding.serviceTitle.text = it.title
+            viewBinding.serviceDescription.text = it.description
+        }
     }
 
     override fun createViewBinding(container: ViewGroup?): FragmentServiceDetailBinding? {

@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import com.github.mohammadsianaki.core.extensions.observeInFragment
 import com.github.mohammadsianaki.core.networkconnection.NetworkState
 import com.github.mohammadsianaki.core.ui.RecyclerFragment
 import com.github.mohammadsianaki.core.ui.adapter.RecyclerData
@@ -51,10 +52,10 @@ class HomeFragment : RecyclerFragment<FragmentHomeBinding, RecyclerData, HomeVie
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel.headerLiveData.observe(viewLifecycleOwner, Observer {
+        observeInFragment(viewModel.headerLiveData){
             viewBinding.homeTitle.text = it.title
             viewBinding.homeCaption.text = it.subtitle
-        })
+        }
     }
 
     override fun onNetworkStateChanged(networkState: NetworkState) {

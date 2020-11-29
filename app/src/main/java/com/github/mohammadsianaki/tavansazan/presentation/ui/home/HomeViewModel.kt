@@ -8,27 +8,27 @@ import com.github.mohammadsianaki.core.functional.fold
 import com.github.mohammadsianaki.core.navigation.NavigationCommand
 import com.github.mohammadsianaki.core.ui.RecyclerViewModel
 import com.github.mohammadsianaki.core.ui.adapter.RecyclerData
+import com.github.mohammadsianaki.core.utils.DispatcherProvider
 import com.github.mohammadsianaki.core.utils.None
 import com.github.mohammadsianaki.core.utils.Resource
-import com.github.mohammadsianaki.core.utils.withIO
 import com.github.mohammadsianaki.tavansazan.domain.repository.AppRepository
 import com.github.mohammadsianaki.tavansazan.presentation.model.toHomePageItemModel
 import com.github.mohammadsianaki.tavansazan.presentation.ui.home.promo.PromoItemModel
-import com.github.mohammadsianaki.tavansazan.presentation.ui.home.promo.PromoSection
 import com.github.mohammadsianaki.tavansazan.presentation.ui.home.service.ServiceCategoryItemModel
-import com.github.mohammadsianaki.tavansazan.presentation.ui.home.service.ServiceSection
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class HomeViewModel @ViewModelInject constructor(
-    private val repository: AppRepository
+    private val repository: AppRepository,
+    private val dispatcherProvider: DispatcherProvider
 ) : RecyclerViewModel<RecyclerData, None>() {
     private val __headerLiveData = MutableLiveData<HomePageHeaderItemModel>()
     val headerLiveData = __headerLiveData.asLiveData()
 
     override fun loadData(params: None) {
         _liveData.value = Resource.loading()
-        viewModelScope.launch {
-            withIO {
+        viewModelScope.launch(dispatcherProvider.main) {
+            withContext(dispatcherProvider.io) {
                 repository.fetchDashboardData()
             }.fold(
                 ifSuccess = { pageEntity ->

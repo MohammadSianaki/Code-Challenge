@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
+import androidx.navigation.NavArgs
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -17,8 +18,8 @@ import com.github.mohammadsianaki.core.ui.adapter.RecyclerData
 import com.github.mohammadsianaki.core.utils.Resource
 import com.github.mohammadsianaki.core.utils.ResourceState
 
-abstract class RecyclerFragment<VB : ViewBinding, Data : RecyclerData, VM : RecyclerViewModel<Data>> :
-    BaseFragment<VB, VM>() {
+abstract class RecyclerFragment<VB : ViewBinding, Data : RecyclerData, VM : RecyclerViewModel<Data, Params>, Params : NavArgs> :
+    BaseFragment<VB, VM, Params>() {
     private var _recyclerView: RecyclerView? = null
     protected val recyclerView
         get() = _recyclerView!!

@@ -9,6 +9,7 @@ import com.github.mohammadsianaki.core.networkconnection.NetworkState
 import com.github.mohammadsianaki.core.ui.RecyclerFragment
 import com.github.mohammadsianaki.core.ui.adapter.RecyclerData
 import com.github.mohammadsianaki.core.ui.adapter.SectionViewHolder
+import com.github.mohammadsianaki.core.utils.None
 import com.github.mohammadsianaki.tavansazan.databinding.FragmentHomeBinding
 import com.github.mohammadsianaki.tavansazan.presentation.ui.home.promo.PromoSection
 import com.github.mohammadsianaki.tavansazan.presentation.ui.home.service.ServiceSection
@@ -16,7 +17,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlin.properties.Delegates
 
 @AndroidEntryPoint
-class HomeFragment : RecyclerFragment<FragmentHomeBinding, RecyclerData, HomeViewModel>() {
+class HomeFragment : RecyclerFragment<FragmentHomeBinding, RecyclerData, HomeViewModel,None>() {
 
     private fun sectionClickHandler(): SectionViewHolder.SectionViewHolderClickHandler =
         object : SectionViewHolder.SectionViewHolderClickHandler {
@@ -34,6 +35,7 @@ class HomeFragment : RecyclerFragment<FragmentHomeBinding, RecyclerData, HomeVie
         }
     }
     override val viewModel: HomeViewModel by viewModels()
+    override val navArgs:None = None
 
     override fun createViewBinding(container: ViewGroup?): FragmentHomeBinding? {
         return FragmentHomeBinding.inflate(
@@ -42,7 +44,7 @@ class HomeFragment : RecyclerFragment<FragmentHomeBinding, RecyclerData, HomeVie
     }
 
     override fun loadData() {
-        viewModel.loadData()
+        viewModel.loadData(navArgs)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

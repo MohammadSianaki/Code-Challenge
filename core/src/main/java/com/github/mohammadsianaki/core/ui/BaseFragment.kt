@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavArgs
 import androidx.viewbinding.ViewBinding
 import com.github.mohammadsianaki.core.extensions.gone
 import com.github.mohammadsianaki.core.extensions.observerNavigationCommands
@@ -15,7 +16,8 @@ import com.github.mohammadsianaki.core.networkconnection.NetworkStateListener
 import com.github.mohammadsianaki.core.networkconnection.manager.ReceiverManager
 import com.github.mohammadsianaki.core.utils.Resource
 
-abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel> : Fragment(),
+abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel<Params>, Params : NavArgs> :
+    Fragment(),
     NetworkStateListener {
 
     private var _viewBinding: VB? = null
@@ -23,6 +25,7 @@ abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel> : Fragment(),
         get() = _viewBinding!!
 
     protected abstract val viewModel: VM
+    protected abstract val navArgs: Params
 
     private var toolbar: Toolbar? = null
     protected open val showToolbar: Boolean = true

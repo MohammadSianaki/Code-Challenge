@@ -12,11 +12,11 @@ import kotlinx.coroutines.launch
 
 class ServiceDetailViewModel @ViewModelInject constructor(
     private val appRepository: AppRepository
-) : RecyclerViewModel<ServiceDetailPurchasePlansItemModel>() {
-    override fun loadData() {
+) : RecyclerViewModel<ServiceDetailPurchasePlansItemModel,ServiceDetailFragmentArgs>() {
+    override fun loadData(params:ServiceDetailFragmentArgs) {
         _liveData.value = Resource.loading()
         viewModelScope.launch {
-            withIO { appRepository.fetchServiceDetail("slug") }.fold(
+            withIO { appRepository.fetchServiceDetail(params.slug) }.fold(
                 ifSuccess = {
                     _liveData.value = Resource.success(it.toServiceDetailItemModel().purchasePlans)
                 }, ifFailure = { errorHolder ->

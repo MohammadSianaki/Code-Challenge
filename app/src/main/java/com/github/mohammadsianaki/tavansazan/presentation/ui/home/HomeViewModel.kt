@@ -8,6 +8,7 @@ import com.github.mohammadsianaki.core.functional.fold
 import com.github.mohammadsianaki.core.navigation.NavigationCommand
 import com.github.mohammadsianaki.core.ui.RecyclerViewModel
 import com.github.mohammadsianaki.core.ui.adapter.RecyclerData
+import com.github.mohammadsianaki.core.utils.None
 import com.github.mohammadsianaki.core.utils.Resource
 import com.github.mohammadsianaki.core.utils.withIO
 import com.github.mohammadsianaki.tavansazan.domain.repository.AppRepository
@@ -19,11 +20,11 @@ import kotlinx.coroutines.launch
 
 class HomeViewModel @ViewModelInject constructor(
     private val repository: AppRepository
-) : RecyclerViewModel<RecyclerData>() {
+) : RecyclerViewModel<RecyclerData,None>() {
     private val __headerLiveData = MutableLiveData<HomePageHeaderItemModel>()
     val headerLiveData = __headerLiveData.asLiveData()
 
-    override fun loadData() {
+    override fun loadData(params:None) {
         _liveData.value = Resource.loading()
         viewModelScope.launch {
             withIO {

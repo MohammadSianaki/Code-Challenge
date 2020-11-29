@@ -65,6 +65,7 @@ abstract class RecyclerFragment<VB : ViewBinding, Data : RecyclerData, VM : Recy
 
     override fun onDestroyView() {
         _recyclerView?.adapter = null
+        _recyclerView?.layoutManager = null
         _recyclerView = null
         _progressBar = null
         _emptyView = null

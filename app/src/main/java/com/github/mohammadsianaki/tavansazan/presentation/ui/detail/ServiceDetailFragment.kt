@@ -1,8 +1,10 @@
 package com.github.mohammadsianaki.tavansazan.presentation.ui.detail
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -26,6 +28,11 @@ class ServiceDetailFragment :
 
     override fun loadData() {
         viewModel.loadData(navArgs)
+    }
+
+    override fun initUI(rootView: View) {
+        super.initUI(rootView)
+        viewBinding.toolbar.backButton.setOnClickListener { findNavController().popBackStack() }
     }
 
     override fun createViewBinding(container: ViewGroup?): FragmentServiceDetailBinding? {

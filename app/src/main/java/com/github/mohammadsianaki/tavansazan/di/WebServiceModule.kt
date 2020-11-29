@@ -1,6 +1,6 @@
 package com.github.mohammadsianaki.tavansazan.di
 
-import com.github.mohammadsianaki.tavansazan.data.api.home.WebService
+import com.github.mohammadsianaki.tavansazan.data.api.WebService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

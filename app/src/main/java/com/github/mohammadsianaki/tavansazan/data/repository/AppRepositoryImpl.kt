@@ -16,7 +16,7 @@ class AppRepositoryImpl @Inject constructor(
         return remoteHomeDataSource.fetchDashboardData()
     }
 
-    override suspend fun fetchServiceDetail(): Result<ServiceDetailEntity> {
-        return remoteServiceDetailDataSource.fetchServiceDetail()
+    override suspend fun fetchServiceDetail(slug: String): Result<ServiceDetailEntity> {
+        return remoteServiceDetailDataSource.fetchServiceDetail(slug)
     }
 }

@@ -16,7 +16,7 @@ class ServiceDetailViewModel @ViewModelInject constructor(
     override fun loadData() {
         _liveData.value = Resource.loading()
         viewModelScope.launch {
-            withIO { appRepository.fetchServiceDetail() }.fold(
+            withIO { appRepository.fetchServiceDetail("slug") }.fold(
                 ifSuccess = {
                     _liveData.value = Resource.success(it.toServiceDetailItemModel().purchasePlans)
                 }, ifFailure = { errorHolder ->

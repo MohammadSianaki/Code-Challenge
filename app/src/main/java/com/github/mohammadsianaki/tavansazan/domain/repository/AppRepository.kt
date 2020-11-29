@@ -6,5 +6,5 @@ import com.github.mohammadsianaki.tavansazan.domain.entity.ServiceDetailEntity
 
 interface AppRepository {
     suspend fun fetchDashboardData(): Result<HomePageEntity>
-    suspend fun fetchServiceDetail():Result<ServiceDetailEntity>
+    suspend fun fetchServiceDetail(slug:String):Result<ServiceDetailEntity>
 }

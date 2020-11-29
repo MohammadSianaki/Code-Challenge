@@ -15,8 +15,13 @@
             app:destination="@id/serviceDetailFragment" />
     </fragment>
     <fragment
-        tools:layout="@layout/fragment_service_detail"
         android:id="@+id/serviceDetailFragment"
         android:name="com.github.mohammadsianaki.tavansazan.presentation.ui.detail.ServiceDetailFragment"
-        android:label="ServiceDetailFragment" />
+        android:label="ServiceDetailFragment"
+        tools:layout="@layout/fragment_service_detail">
+        <argument
+            android:name="slug"
+            app:argType="string"
+            app:nullable="false" />
+    </fragment>
 </navigation>

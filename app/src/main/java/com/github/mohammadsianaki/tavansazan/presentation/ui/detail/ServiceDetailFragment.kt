@@ -7,13 +7,13 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.github.mohammadsianaki.core.networkconnection.NetworkState
 import com.github.mohammadsianaki.core.ui.RecyclerFragment
-import com.github.mohammadsianaki.tavansazan.databinding.ServiceDetailFragmentBinding
+import com.github.mohammadsianaki.tavansazan.databinding.FragmentServiceDetailBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlin.properties.Delegates
 
 @AndroidEntryPoint
 class ServiceDetailFragment :
-    RecyclerFragment<ServiceDetailFragmentBinding, ServiceDetailPurchasePlansItemModel, ServiceDetailViewModel>() {
+    RecyclerFragment<FragmentServiceDetailBinding, ServiceDetailPurchasePlansItemModel, ServiceDetailViewModel>() {
     override val viewModel: ServiceDetailViewModel by viewModels()
     override val recyclerAdapter: ServicePurchasePlansAdapter by lazy(LazyThreadSafetyMode.NONE) {
         ServicePurchasePlansAdapter()
@@ -25,8 +25,8 @@ class ServiceDetailFragment :
         viewModel.loadData()
     }
 
-    override fun createViewBinding(container: ViewGroup?): ServiceDetailFragmentBinding? {
-        return ServiceDetailFragmentBinding.inflate(
+    override fun createViewBinding(container: ViewGroup?): FragmentServiceDetailBinding? {
+        return FragmentServiceDetailBinding.inflate(
             LayoutInflater.from(container?.context), container, false
         )
     }

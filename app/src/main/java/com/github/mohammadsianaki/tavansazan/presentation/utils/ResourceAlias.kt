@@ -5,3 +5,4 @@ import com.github.mohammadsianaki.tavansazan.R
 typealias Ids = R.id
 typealias Drawables = R.drawable
 typealias Layouts = R.layout
+typealias Colors = R.color

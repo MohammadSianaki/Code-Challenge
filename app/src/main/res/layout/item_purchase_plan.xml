@@ -21,16 +21,21 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:srcCompat="@drawable/carwash" />
 
-        <androidx.appcompat.widget.AppCompatImageView
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/badge"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="32dp"
+            android:layout_height="20dp"
+            android:layout_marginEnd="@dimen/double_margin"
+            android:background="@drawable/badge_background"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            android:gravity="center"
             app:layout_constraintBottom_toBottomOf="@+id/serviceLogo"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.741"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toEndOf="@+id/serviceLogo"
             app:layout_constraintTop_toTopOf="@+id/serviceLogo"
-            tools:srcCompat="@drawable/badge" />
+            tools:text="%20" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/serviceTitle"
@@ -53,11 +58,15 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/double_margin"
             android:layout_marginTop="@dimen/default_margin"
+            android:layout_marginEnd="@dimen/double_margin"
+            android:ellipsize="end"
             android:fontFamily="@font/medium"
+            android:maxLines="1"
             android:textColor="@color/color_text_primary"
             android:textFontWeight="600"
             android:textSize="12sp"
             android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/serviceTitle"
             tools:text="Simple and quick" />
@@ -67,11 +76,15 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/double_margin"
-            app:fontFamily="@font/regular"
             android:layout_marginTop="@dimen/default_margin"
+            android:layout_marginEnd="@dimen/double_margin"
+            android:ellipsize="end"
+            android:maxLines="2"
             android:textColor="@color/color_text_secondary"
             android:textFontWeight="300"
             android:textSize="12sp"
+            app:fontFamily="@font/regular"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/serviceSubTitle"
             tools:text="Exterior wash" />

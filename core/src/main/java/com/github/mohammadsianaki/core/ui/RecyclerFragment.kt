@@ -37,8 +37,13 @@ abstract class RecyclerFragment<VB : ViewBinding, Data : RecyclerData, VM : Recy
         get() = _errorView!!
 
     protected abstract val recyclerAdapter: BaseRecyclerAdapter<Data>
-    protected open val recyclerViewLayoutManager: RecyclerView.LayoutManager =
-        LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+    protected open val recyclerViewLayoutManager: RecyclerView.LayoutManager by lazy {
+        LinearLayoutManager(
+            requireContext(),
+            LinearLayoutManager.VERTICAL,
+            false
+        )
+    }
     protected open val recyclerItemAnimator: RecyclerView.ItemAnimator = DefaultItemAnimator()
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

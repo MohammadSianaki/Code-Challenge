@@ -19,8 +19,9 @@ class ServiceDetailFragment :
     override val recyclerAdapter: ServicePurchasePlansAdapter by lazy(LazyThreadSafetyMode.NONE) {
         ServicePurchasePlansAdapter()
     }
-    override val recyclerViewLayoutManager: RecyclerView.LayoutManager =
+    override val recyclerViewLayoutManager: RecyclerView.LayoutManager by lazy {
         GridLayoutManager(requireContext(), 2, RecyclerView.VERTICAL, false)
+    }
     override val navArgs: ServiceDetailFragmentArgs by navArgs()
 
     override fun loadData() {

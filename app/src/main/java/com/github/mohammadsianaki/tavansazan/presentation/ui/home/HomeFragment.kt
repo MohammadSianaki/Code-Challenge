@@ -11,7 +11,9 @@ import com.github.mohammadsianaki.core.ui.adapter.RecyclerData
 import com.github.mohammadsianaki.core.ui.adapter.SectionViewHolder
 import com.github.mohammadsianaki.core.utils.None
 import com.github.mohammadsianaki.tavansazan.databinding.FragmentHomeBinding
+import com.github.mohammadsianaki.tavansazan.presentation.ui.home.promo.PromoItemModel
 import com.github.mohammadsianaki.tavansazan.presentation.ui.home.promo.PromoSection
+import com.github.mohammadsianaki.tavansazan.presentation.ui.home.service.ServiceCategoryItemModel
 import com.github.mohammadsianaki.tavansazan.presentation.ui.home.service.ServiceSection
 import dagger.hilt.android.AndroidEntryPoint
 import kotlin.properties.Delegates
@@ -23,8 +25,8 @@ class HomeFragment : RecyclerFragment<FragmentHomeBinding, RecyclerData, HomeVie
         object : SectionViewHolder.SectionViewHolderClickHandler {
             override fun <SectionItem> onItemClicked(item: SectionItem, position: Int) {
                 when (item) {
-                    is ServiceSection -> viewModel.onServiceItemClicked(item)
-                    is PromoSection -> viewModel.onPromoItemClicked(item)
+                    is ServiceCategoryItemModel -> viewModel.onServiceItemClicked(item)
+                    is PromoItemModel -> viewModel.onPromoItemClicked(item)
                 }
             }
         }

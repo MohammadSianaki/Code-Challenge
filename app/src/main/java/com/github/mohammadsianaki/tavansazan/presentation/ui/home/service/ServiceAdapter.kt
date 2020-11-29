@@ -26,7 +26,7 @@ class ServiceViewHolder(
     override fun bindData(item: ServiceCategoryItemModel) {
         binding.root.setOnClickListener { onItemClickListener(item, adapterPosition) }
         with(binding) {
-            if (true) badge.visible() else badge.gone()
+            if (item.hasNewBadge) badge.visible() else badge.gone()
             Glide.with(serviceLogo.context).load(item.imageUrl).into(serviceLogo)
             serviceTitle.text = item.title
             serviceSubTitle.text = item.subTitle

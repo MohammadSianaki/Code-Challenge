@@ -5,10 +5,12 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.github.mohammadsianaki.core.extensions.gone
+import com.github.mohammadsianaki.core.extensions.showStrikeThrough
 import com.github.mohammadsianaki.core.ui.adapter.BaseRecyclerAdapter
 import com.github.mohammadsianaki.core.ui.adapter.BaseViewHolder
 import com.github.mohammadsianaki.tavansazan.databinding.ItemPurchasePlanBinding
 import com.github.mohammadsianaki.tavansazan.presentation.utils.Colors
+import java.text.DecimalFormat
 
 class ServicePurchasePlansAdapter : BaseRecyclerAdapter<ServiceDetailPurchasePlansItemModel>() {
     override fun onCreateViewHolder(
@@ -40,7 +42,12 @@ class PurchasePlanViewHolder(
             }
             if (item.hasDiscount) {
                 badge.text = item.discountPercentage.toHumanReadablePercent()
-            }else {
+                oldPrice.text = item.basePrice.toPrice()
+                oldPrice.showStrikeThrough(true)
+                price.text = item.listBasePrice.toPrice()
+            } else {
+                price.text = item.listBasePrice.toPrice()
+                oldPrice.gone()
                 badge.gone()
             }
         }
@@ -48,3 +55,8 @@ class PurchasePlanViewHolder(
 }
 
 private fun Long.toHumanReadablePercent() = "%$this"
+
+private fun Long.toPrice(): String {
+    val df = DecimalFormat("#.##")
+    return "${df.format(this)} QAR"
+}

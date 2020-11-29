@@ -5,5 +5,8 @@
     <color name="color_text_secondary">#727991</color>
     <color name="light_gray">#F0F1F5</color>
     <color name="dark_blue">#103AC1</color>
-    <color name="red">#FC3D39</color>
+    <color name="cyan">#22C8EF</color>
+    <color name="error">#FC3D39</color>
+    <color name="red">#FB2F5F</color>
+    <color name="gray">#E6EBFA</color>
 </resources>
